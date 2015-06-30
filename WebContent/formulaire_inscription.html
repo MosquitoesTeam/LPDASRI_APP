@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Inscription en 1ere annee UIC</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<h1>Formulaire d'inscription</h1>
+	<form method="POST" action="inscrire">
+		<table>
+			<tr>
+				<td colspan="2"><hr />
+			</tr>
+			<tr>
+				<td>Email :</td>
+				<td><input type="email" name="email"></td>
+			</tr>
+			<tr>
+				<td>Nom :</td>
+				<td><input type="text" name="nom"></td>
+			</tr>
+			<tr>
+				<td>Prenom :</td>
+				<td><input type="text" name="prenom"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr />
+			</tr>
+			<tr>
+				<td>Note :</td>
+				<td><input type="number" min="0" max="20" name="note"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr />
+			</tr>
+			<tr>
+				<td>Mot de Passe :</td>
+				<td><input type="password" name="motPasse"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr />
+			</tr>
+		</table>
+		<input type="submit" value="Envoyer" name="bouton" />
+	</form>
+</body>
+</html>
