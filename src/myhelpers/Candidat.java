@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Candidat implements Serializable {
 
+
 	private String email;
 	private String nom;
 	private String prenom;

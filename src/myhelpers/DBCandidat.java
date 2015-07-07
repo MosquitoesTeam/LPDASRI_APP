@@ -11,11 +11,13 @@ public class DBCandidat {
 				+ "VALUES (?, ?, ?, ?, ?)";
 		try {
 			ps = con.prepareStatement(query);
+			
 			ps.setString(1, candidat.getEmail());
 			ps.setString(2, candidat.getNom());
 			ps.setString(3, candidat.getPrenom());
 			ps.setDouble(4, candidat.getNote());
 			ps.setString(5, candidat.getMotPasse());
+			
 			return ps.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e);
@@ -117,6 +119,34 @@ public class DBCandidat {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		String query = "SELECT * FROM Candidat";
+		ArrayList<Candidat> listeCandidats = new ArrayList<Candidat>();
+		try {
+			ps = con.prepareStatement(query);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				Candidat candidat = new Candidat();
+				candidat.setEmail(rs.getString("Email"));
+				candidat.setNom(rs.getString("nom"));
+				candidat.setPrenom(rs.getString("prenom"));
+				candidat.setNote(rs.getDouble("note"));
+				candidat.setMotPasse(rs.getString("motPasse"));
+				listeCandidats.add(candidat);
+			}
+			return listeCandidats;
+		} catch (SQLException e) {
+			System.out.println(e);
+			return null;
+		} finally {
+			DBUtil.closeResultSet(rs);
+			DBUtil.closePreparedStatement(ps);
+		}
+	}
+	
+	public static ArrayList<Candidat> selectTousLesSelectiones() {
+		Connection con = DBUtil.dbConnect("inscription", "root", "");
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String query = "SELECT * FROM Candidat where note > 12.0";
 		ArrayList<Candidat> listeCandidats = new ArrayList<Candidat>();
 		try {
 			ps = con.prepareStatement(query);

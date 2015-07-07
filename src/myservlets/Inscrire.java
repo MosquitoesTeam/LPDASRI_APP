@@ -26,6 +26,9 @@ public class Inscrire extends HttpServlet {
 				c.setPrenom(request.getParameter("prenom"));
 				c.setNote(Double.parseDouble(request.getParameter("note")));
 				c.setMotPasse(request.getParameter("motPasse"));
+				
+				System.out.println("motdepasse: " + request.getParameter("motPasse"));
+				
 				session.setAttribute("candidat", c);
 				this.getServletContext().getRequestDispatcher("/confirmer.jsp")
 						.forward(request, response);
@@ -35,8 +38,7 @@ public class Inscrire extends HttpServlet {
 					c = (Candidat) session.getAttribute("candidat");
 					int resOpe = DBCandidat.insert(c);
 					session.setAttribute("operation", "Insertion");
-					session.setAttribute("resultatOperation", new Integer(
-							resOpe));
+					session.setAttribute("resultatOperation", new Integer(resOpe));
 					this.getServletContext()
 							.getRequestDispatcher("/operes.jsp")
 							.forward(request, response);

@@ -35,6 +35,13 @@ public class ServAdmin extends HttpServlet {
 				this.getServletContext()
 						.getRequestDispatcher("/affichetous.jsp")
 						.forward(request, response);
+			} else if (strConBouton.equals("Consulter tous les selectionnes")) {
+				ArrayList<Candidat> listecandidatsselectiones = DBCandidat
+						.selectTousLesSelectiones();
+				session.setAttribute("listecandidatsselectiones", listecandidatsselectiones);
+				this.getServletContext()
+						.getRequestDispatcher("/selectionEtudiants.jsp")
+						.forward(request, response);
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

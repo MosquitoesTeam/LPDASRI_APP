@@ -32,7 +32,7 @@ public class ServLogin extends HttpServlet {
 			out.println("<h1>Servlet MyServlet at " + request.getContextPath()
 					+ "</h1>");
 			out.println("<h2>email : " + email + "</h2>");
-			out.println("<h2>Mat de passe : " + motPasse + "</h2>");
+			out.println("<h2>Mot de passe : " + motPasse + "</h2>");
 			boolean candidateExiste = DBCandidat.loginExists(email, motPasse);
 			if (candidateExiste) {
 				Candidat candidat = DBCandidat.selectCandidat(email);

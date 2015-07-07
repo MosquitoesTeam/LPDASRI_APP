@@ -1,64 +1,105 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="myhelpers.*"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>JSP Page</title>
-<link rel="stylesheet" href="css/styles.css" type="text/css" />
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Gestion de formation LPDASRI</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
+
 <body>
-	<h1>Merci d'être joint à nous</h1>
-	<p>Ci-dessous les informations que vous avez saisies</p>
-	<%
-		Candidat c = (Candidat) session.getAttribute("candidat");
-	%>
-	<form method="POST" action="inscrire">
-		<table>
-			<tr>
-				<td colspan="2"><hr />
-			</tr>
-			<tr>
-				<td>Email :</td>
-				<td><input type="email" name="email" value="<%=c.getEmail()%>"></td>
-			</tr>
-			<tr>
-				<td>Nom :</td>
-				<td><input type="text" name="nom" value="<%=c.getNom()%>"></td>
-			</tr>
-			<tr>
-				<td>Prenom :</td>
-				<td><input type="text" name="prenom" value="<%=c.getPrenom()%>"></td>
-			</tr>
-			<tr>
-				<td colspan="2"><hr />
-			</tr>
-			<tr>
-				<td>Note :</td>
-				<td><input type="number" min="0" max="20" name="note"
-					value="<%=c.getNote()%>"></td>
-			</tr>
-			<tr>
-				<td colspan="2"><hr />
-			</tr>
-			<tr>
-				<td>Mot de Passe :</td>
-				<td><input type="password" name="motPasse"
-					value="<%=c.getMotPasse()%>"></td>
-			</tr>
-			<tr>
-				<td colspan="2"><hr />
-			</tr>
-		</table>
-		<table border="1">
-			<tbody>
-				<tr>
-					<td><input type="submit" value="Confirmer" name="bouton" /></td>
-					<td><input type="submit" value="Modifier" name="bouton" /></td>
-					<td><input type="submit" value="Annuler" name="bouton" /></td>
-				</tr>
-			</tbody>
-		</table>
-	</form>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Merci d'être joint à nous</h3>
+						<p>Ci-dessous les informations que vous avez saisies</p>
+						<%
+							Candidat c = (Candidat) session.getAttribute("candidat");
+						%>
+                    </div>
+                    <div class="panel-body">
+						<form method="POST" action="inscrire" role="form">
+                            <fieldset>
+                               <label>Email</label>
+								<div class="form-group input-group">
+									<span class="input-group-addon">@</span> 
+									<input class="form-control" type="email" name="email" value="<%=c.getEmail()%>">
+								</div>
+								<div class="form-group">
+									<label>Nom</label> 
+									<input class="form-control" type="text" name="nom" value="<%=c.getNom()%>">
+								</div>
+								<div class="form-group">
+									<label>Prenom</label> 
+									<input class="form-control" name="prenom" value="<%=c.getPrenom()%>">
+								</div>
+								<label>Note</label>
+								<div class="form-group input-group">
+									<input type="number" min="0" max="20" class="form-control" name="note" value="<%=c.getNote()%>">
+									<span class="input-group-addon">/20</span>
+								</div>
+								
+								<div class="form-group">
+									<label>Mot de passe</label>
+									<input class="form-control" type="password" name="motPasse" value="<%=c.getMotPasse()%>">
+								</div>
+                                <!-- Change this to a button or input when using this as a form -->
+                                
+								
+								<input type="submit" class="btn btn-outline btn-success" name="bouton" value="Confirmer" />
+								<input type="submit" class="btn btn-outline btn-info" name="bouton" value="Modifier" />
+								<input type="submit" class="btn btn-outline btn-warning" name="bouton" value="Annuler" />
+							
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="dist/js/sb-admin-2.js"></script>
+
 </body>
+
 </html>
